@@ -1,0 +1,52 @@
+[
+    {
+      "httpRequest": {
+        "method": "GET",
+        "path": "/api/coordinates",
+        "queryStringParameters": {
+          "?lat": ["50.23[0-9]*"],
+          "?lng": ["19.02[0-9]*"]
+        }
+      },
+      "httpResponse": {
+        "body": [
+          {
+            "lat" :50.23473232155869, 
+            "lng" : 19.025422356416804,
+            "desc" : "description 1"
+          },
+            {
+            "lat" : 50.2356788213471, 
+            "lng" : 19.021270029616645,
+            "desc" : "description 2"
+          }
+        ]
+      }
+    },
+
+    {
+      "httpRequest": {
+        "method": "GET",
+        "path": "/api/coordinates"
+      },
+      "httpResponse": {
+        "body": [
+          {
+            "lat" :50.23473232155869, 
+            "lng" : 19.025422356416804,
+            "desc" : "description 1"
+          },
+            {
+            "lat" : 50.2356788213471, 
+            "lng" : 19.021270029616645,
+            "desc" : "description 2"
+          },
+            {
+            "lat" : 50.19024155226475, 
+            "lng" : 19.048558352912785,
+            "desc" : "description 3"
+          }
+        ]
+      }
+    }
+  ]
