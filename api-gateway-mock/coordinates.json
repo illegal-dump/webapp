@@ -1,52 +1,91 @@
 [
-    {
-      "httpRequest": {
-        "method": "GET",
-        "path": "/api/coordinates",
-        "queryStringParameters": {
-          "?lat": ["50.23[0-9]*"],
-          "?lng": ["19.02[0-9]*"]
-        }
-      },
-      "httpResponse": {
-        "body": [
-          {
-            "lat" :50.23473232155869, 
-            "lng" : 19.025422356416804,
-            "desc" : "description 1"
-          },
-            {
-            "lat" : 50.2356788213471, 
-            "lng" : 19.021270029616645,
-            "desc" : "description 2"
-          }
-        ]
-      }
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/coordinates"
     },
-
-    {
-      "httpRequest": {
-        "method": "GET",
-        "path": "/api/coordinates"
-      },
-      "httpResponse": {
-        "body": [
-          {
-            "lat" :50.23473232155869, 
-            "lng" : 19.025422356416804,
-            "desc" : "description 1"
-          },
-            {
-            "lat" : 50.2356788213471, 
-            "lng" : 19.021270029616645,
-            "desc" : "description 2"
-          },
-            {
-            "lat" : 50.19024155226475, 
-            "lng" : 19.048558352912785,
-            "desc" : "description 3"
-          }
-        ]
-      }
+    "httpResponse": {
+      "body": [
+        {
+          "lat": 50.23473232155869,
+          "lng": 19.025422356416804,
+          "desc": "description 1"
+        },
+        {
+          "lat": 50.2356788213471,
+          "lng": 19.021270029616645,
+          "desc": "description 2"
+        },
+        {
+          "lat": 50.19024155226475,
+          "lng": 19.048558352912785,
+          "desc": "description 3"
+        }
+      ]
+    },
+    "times": {
+      "remainingTimes": 2,
+      "unlimited": false
     }
-  ]
+  },
+  {
+    "httpRequest": {
+      "method": "GET",
+      "path": "/api/coordinates"
+    },
+    "httpResponse": {
+      "body": [
+        {
+          "lat": 50.23473232155869,
+          "lng": 19.025422356416804,
+          "desc": "description 1"
+        },
+        {
+          "lat": 50.2356788213471,
+          "lng": 19.021270029616645,
+          "desc": "description 2"
+        },
+        {
+          "lat": 50.19024155226475,
+          "lng": 19.048558352912785,
+          "desc": "description 3"
+        },
+        {
+          "lat": 50.247343661587486,
+          "lng": 19.00203431579378,
+          "desc": "desc 4"
+        },
+        {
+          "lat": 50.24435202418336,
+          "lng": 18.99898728288568,
+          "desc": "desc 5"
+        },
+        {
+          "lat": 50.24015288299641,
+          "lng": 19.003643613153088,
+          "desc": "desc 6"
+        },
+        {
+          "lat": 50.24096188660864,
+          "lng": 19.014629561612153,
+          "desc": "desc 7"
+        },
+        {
+          "lat": 50.02443435302734,
+          "lng": 19.863005165988092,
+          "desc": "desc 8"
+        },
+        {
+          "lat": 50.24708766283212,
+          "lng": 20.2491509657075,
+          "desc": "desc 9"
+        },
+        {
+          "lat": 50.742666276939644,
+          "lng": 18.60745933066961,
+          "desc": "desc 10"
+        }
+      ]
+    }
+  }
+]

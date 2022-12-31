@@ -1,54 +1,97 @@
 <template>
-<div >
-    <div class="container rounded">
-      <MarkerMap :markers="markers" />
+  <div>
+    <div class="container">
+      <div style="float: left"><b-button variant="outline-dark" size="sm" class="refresh"
+          @click="refresh()">Refresh</b-button></div>
+      <div style="float: right" >total: {{ markers.length }}</div>
+      <div style="clear: both;"></div>
+
+      <LeafletMap :markers="markers" :zoom="zoom"/>
     </div>
-</div>
+  </div>
 </template>
 
 
 <script>
 // @ is an alias to /src
-import MarkerMap from '@/components/MarkerMap.vue'
+import LeafletMap from '@/components/LeafletMap.vue'
 
 export default {
   name: 'SearchView',
   components: {
-    MarkerMap
+    LeafletMap
   },
   data() {
     return {
+      /**
+       * Api Gateway Url
+       */
+      apiGatewayUrl: process.env.VUE_APP_API_GATEWAY_URL,
+
+      /**
+       * Coordinates API
+       */
+      apiCoordinates: process.env.VUE_APP_API_GATEWAY_URL + process.env.VUE_APP_API_COORDINATES,
+
+      /**
+       * Map zoom
+       */
+      zoom : 7,
+
       markers: [
-        {
-          position: {
-            lat: 50.08476746164984,
-            lng: 18.97534475266365,
-          },
-        },
-        {
-          position: {
-            lat: 50.08167771832807, 
-            lng: 18.985255631312956,
-          },
-        },
-        {
-          position: {
-            lat: 50.07090064441086, 
-            lng: 18.997151613185807,
-          },
-        },
+        // {
+        //   lat: 50.08476746164984,
+        //   lng: 18.97534475266365,
+        // },
+        // {
+        //   lat: 50.08167771832807,
+        //   lng: 18.985255631312956,
+        // },
       ],
     };
   },
+  mounted() {
+    //
+  },
+  methods: {
+    async refresh() {
+
+      const request = {
+        method: "GET",
+        headers: {
+          "Accept": "application/json",
+          "Content-Type": "application/json",
+        },
+        mode: "cors"
+      };
+
+      fetch(this.apiCoordinates, request)
+        .then(async response => {
+          const data = await response.json();
+          this.markers = data;
+          this.errorMessage = "";
+        }).catch(error => {
+          this.errorMessage = "There was an error while getting coordinates" + error;
+        })
+
+    },
+  }
 }
 </script>
 
 <style scoped>
-  .container{
-    width: 50vw;
-    margin: auto;
-    background-color: red;
-    padding: 10px;
-    margin-top: 10px;
-  }
+.container {
+  width: 50vw;
+  margin-top: 10px;
+}
+
+.refresh {
+  margin-bottom: 2px;
+  border: 1px solid #fff;
+  border-bottom: 2px solid #343A40;
+
+}
+
 </style>
+
+
