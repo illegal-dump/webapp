@@ -1,4 +1,4 @@
-name: publish docker image for illegal-dump-webapp
+name: publish docker image for illegal-dump-api-gateway-mock
 
 on:
   push:
@@ -24,13 +24,13 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-          images: 0i99/illegal-dump-webapp
+          images: 0i99/illegal-dump-api-gateway-mock
       
       - name: Build and push Docker image
         uses: docker/build-push-action@v3
         with:
-          context: webapp
-          file: webapp/Dockerfile
+          context: api-gateway-mock
+          file: api-gateway-mock/Dockerfile
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
