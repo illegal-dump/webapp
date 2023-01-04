@@ -1,6 +1,6 @@
 @startuml
-[webapp\n:80] as browser
-[proxy\n:6029] as proxy
+[webapp\n] as browser
+[proxy\n] as proxy
 [api-gateway] as apigateway
 
 browser -right-> proxy : connects to api-gateway\nvia localhost nginx proxy
