@@ -7,7 +7,7 @@
         {% if API_GATEWAY_URL is defined %}
             proxy_pass          {{API_GATEWAY_URL}};
         {% else %}
-            proxy_pass          "http://api-gateway-mock:1080";
+            proxy_pass          "http://localhost:1080";
         {% endif %}
             proxy_redirect     off;
             proxy_set_header   Host $host;

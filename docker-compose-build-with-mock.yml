@@ -12,8 +12,7 @@ services:
     build: ./webapp
     container_name: illegal-dump-webapp
     ports:
-      - 80:80    
-      - 8080:80  
+      - 8080:80
       - 6029:6029
     environment:
       - API_GATEWAY_URL=http://mock:1080

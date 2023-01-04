@@ -23,15 +23,11 @@ export default {
   },
   data() {
     return {
-      /**
-       * Api Gateway Url
-       */
-      apiGatewayUrl: process.env.VUE_APP_API_GATEWAY_URL,
 
       /**
        * Coordinates API
        */
-      apiCoordinates: process.env.VUE_APP_API_GATEWAY_URL + process.env.VUE_APP_API_COORDINATES,
+      apiCoordinates: "http://" + location.hostname + ":" + process.env.VUE_APP_LOCAL_PROXY_PORT + process.env.VUE_APP_API_COORDINATES,
 
       /**
        * Map zoom
