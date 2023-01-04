@@ -75,21 +75,9 @@ spec:
     nodePort: 30081
     protocol: TCP
     name: http 
-  selector:
-    app: illegal-dump-webapp
-
----
-
-apiVersion: v1
-kind: Service
-metadata:
-  name: illegal-dump-webapp-proxy
-spec:
-  type: NodePort
-  ports:
   - port: 30303
     nodePort: 30303
     protocol: TCP
-    name: http 
+    name: proxy 
   selector:
     app: illegal-dump-webapp
