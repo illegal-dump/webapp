@@ -1,6 +1,15 @@
 [
   {
     "httpRequest": {
+      "path": "/js"
+  },
+  "httpResponseTemplate": {
+      "template": "return { statusCode: 200, body: JSON.stringify({method: request.method, path: request.path, body: request.body, msg: 'hello from JAVASCRIPT'}) };",
+      "templateType": "JAVASCRIPT"
+  }
+  },
+  {
+    "httpRequest": {
       "method": "GET",
       "path": "/api/coordinates"
     },

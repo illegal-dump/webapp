@@ -11,7 +11,7 @@ COPY . ./config
 
 
 # production stage
-FROM mockserver/mockserver:5.14.0 as production-stage
+FROM mockserver/mockserver:5.13.0 as production-stage
 
 COPY --from=build-stage /mock/config /config
 
