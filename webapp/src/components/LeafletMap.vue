@@ -1,12 +1,11 @@
 <template>
     <div style="height: 75vh; width: 50vw;">
-
-        <l-map :zoom="zoom" class="rounded map" :center="[50.23, 19.02]">
+        <l-map :zoom="zoom" class="rounded map" :center="center" @update:zoom="zoomUpdated" @update:center="centerUpdated">
             <l-tile-layer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" :attribution="OpenStreetMap" />
 
             <l-marker v-for="marker in markers" :key="marker" :lat-lng="[marker.lat, marker.lng]">
                 <l-popup>
-                    {{marker.desc}}
+                    {{marker.label}}
                     <br/>
                     <hr/>
                     {{ [marker.lat, marker.lng] }}
@@ -37,12 +36,25 @@ export default {
         markers: Array,
         zoom: {
             type: Number,
-            default: 10
+            default: 9
         },
+        center : Array
     },
     data() {
-
+        return {
+            
+        
+        };
     },
+    methods: {
+        zoomUpdated (value) {
+            this.$parent.zoomUpdated(value);
+        },
+        centerUpdated(value){
+            let latlng = [value.lat, value.lng]
+            this.$parent.centerUpdated(latlng);
+        }
+    }
 };
 </script>
 

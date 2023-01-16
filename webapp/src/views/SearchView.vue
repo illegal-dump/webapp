@@ -3,10 +3,10 @@
     <div class="container">
       <div style="float: left"><b-button variant="outline-dark" size="sm" class="refresh"
           @click="refresh()">Refresh</b-button></div>
-      <div style="float: right" >total: {{ markers.length }}</div>
+      <div style="float: right" >center: {{center}}, zoom: {{ zoom }}, <span class="btn btn-dark btn-sm">total: {{ markers.length }}</span></div>
       <div style="clear: both;"></div>
 
-      <LeafletMap :markers="markers" :zoom="zoom"/>
+      <LeafletMap :markers="markers" :zoom="zoom" :center="center"/>
     </div>
   </div>
 </template>
@@ -32,24 +32,30 @@ export default {
       /**
        * Map zoom
        */
-      zoom : 7,
+      zoom : 9,
 
       markers: [
-        // {
-        //   lat: 50.08476746164984,
-        //   lng: 18.97534475266365,
-        // },
-        // {
-        //   lat: 50.08167771832807,
-        //   lng: 18.985255631312956,
-        // },
+          // { lat: 50.23694871652907 , lng: 19.01825272895186 , label: "center " },
+          // { lat: 50.23694871652907 , lng: 17.725811458173524, label: "west " },
+          // { lat: 50.23694871652907 , lng: 20.31069399973014, label: "east " },
+          // { lat: 51.06369525698675 , lng: 19.01825272895186 , label: "nort" },
+          // { lat: 49.410202176071394 , lng: 19.01825272895186 , label: "south" },
       ],
+
+      center : [50.23, 19.02]
     };
   },
   mounted() {
     //
   },
   methods: {
+    zoomUpdated (value) {
+            this.zoom = value;
+    },
+    centerUpdated(value){
+            this.center = value;
+    },
+
     async refresh() {
 
       const request = {
@@ -60,8 +66,10 @@ export default {
         },
         mode: "cors"
       };
-
-      fetch(this.apiCoordinates, request)
+      let [lat,lng] = this.center;
+      const queryParams = "?lat="+lat+"&lng="+lng+"&zoom="+this.zoom;
+      // console.log("query: " + queryParams);
+      fetch(this.apiCoordinates + queryParams, request)
         .then(async response => {
           const data = await response.json();
           this.markers = data;
