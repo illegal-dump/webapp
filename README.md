@@ -12,5 +12,5 @@ docker-compose -f docker-compose-build-with-mock.yml up --build
 open browser at `http://localhost:8080`
 
 You should see something like this
-![](screenshot.png)
+![](screenshot2.png)
 where markers represent data from mock
