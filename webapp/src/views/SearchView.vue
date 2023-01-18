@@ -67,12 +67,17 @@ export default {
         mode: "cors"
       };
       let [lat,lng] = this.center;
+
       const queryParams = "?lat="+lat+"&lng="+lng+"&zoom="+this.zoom;
-      // console.log("query: " + queryParams);
-      fetch(this.apiCoordinates + queryParams, request)
+      const url = this.apiCoordinates + queryParams;
+      // const url = "http://minikube.local:30303" + process.env.VUE_APP_API_COORDINATES + queryParams;
+      
+      // console.log("Calling " + url);
+      fetch(url, request)
         .then(async response => {
           const data = await response.json();
-          this.markers = data;
+          // console.log("Got response: " + data);
+          this.markers = data.coordinates;
           this.errorMessage = "";
         }).catch(error => {
           this.errorMessage = "There was an error while getting coordinates" + error;
